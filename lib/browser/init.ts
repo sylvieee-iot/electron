@@ -24,14 +24,14 @@ process.on('uncaughtException', function (error) {
     return;
   }
 
-  console.error(electron, 'a stupid occured');
-
   // Show error in GUI.
   // We can't import { dialog } at the top of this file as this file is
   // responsible for setting up the require hook for the "electron" module
   // so we import it inside the handler down here
   import('electron')
     .then(({ dialog }) => {
+      console.error(electron, 'a stupid occured');
+      
       const stack = error.stack ? error.stack : `${error.name}: ${error.message}`;
       const message = 'Uncaught Exception:\n' + stack;
       dialog.showErrorBox('A JavaScript error occurred in the main process', message);
