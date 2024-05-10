@@ -24,6 +24,8 @@ process.on('uncaughtException', function (error) {
     return;
   }
 
+  console.error(electron, 'a stupid occured');
+
   // Show error in GUI.
   // We can't import { dialog } at the top of this file as this file is
   // responsible for setting up the require hook for the "electron" module
